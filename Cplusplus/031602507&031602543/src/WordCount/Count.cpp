@@ -42,7 +42,7 @@ int Count::countWordNum(vector<string> &linesBuf,int weightValue)
 			{
 				if (wordBuf == "title" && linesBuf[i][j] == ':' && j == 5)
 				{
-
+					paperCount++;
 					isTitle = 1;
 					wordBuf = "";
 					continue;
@@ -123,6 +123,12 @@ vector<map<string,int>::iterator> & Count::countTopXWord(int topX)
 	return topXWord;
 }
 
+//获取 paperCount 的值
+int Count::getpaperCount()
+{
+	return paperCount;
+}
+
 //判断是否为字母
 inline bool Count::isLetter(string::iterator it) {
 	return (*it >= 97 && *it <= 122) ;
@@ -132,10 +138,12 @@ inline bool Count::isLetter(const char & ch) {
 	return (ch >= 97 && ch <= 122);
 }
 //判断是否为数字
-inline bool Count::isDigit(string::iterator it) {
+inline bool Count::isDigit(string::iterator it) 
+{
 	return *it >= '0' && *it <= '9';
 }
 //判断是否为数字(重载)
-inline bool Count::isDigit(const char  & ch) {
+inline bool Count::isDigit(const char  & ch)
+{
 	return ch >= '0' && ch <= '9';
 }

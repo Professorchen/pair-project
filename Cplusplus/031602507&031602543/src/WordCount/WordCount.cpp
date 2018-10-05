@@ -1,9 +1,9 @@
 /********************************************************************************
 * @File name: wc.cpp
 * @Author: ChenYuXin
-* @Version: 5.2
+* @Version: 5.3
 * @Date: 2018-10-05
-* @Description: fixed bugs
+* @Description: number of invalid char & line & word excluded
 ********************************************************************************/
 
 
@@ -27,6 +27,9 @@ int main(int argc, char *argv[])
 		int lineCount = 0;			//行数
 		int characterCount = 0;		//字符数
 		int wordCount = 0;			//单词数
+		int paperCount = 0;			//论文数
+		int invaildChar = 0;		//无效字符数
+		int invaildLine = 0;		//无效行数
 		const char* inputFileName = "";  //输入文件名
 		const char* outputFileName = ""; //输出文件名
 		int weightValue = 0;		//权重
@@ -65,10 +68,13 @@ int main(int argc, char *argv[])
 			characterCount = count.countCharNum(charBuf);			//计算字符数
 			lineCount = count.countLineNum(linesBuf);				//计算行数
 			wordCount = count.countWordNum(linesBuf,weightValue);	//计算单词数
+			paperCount = count.getpaperCount();						//获取论文数
+			invaildChar = (paperCount * 19) + (paperCount - 1) * 2;	//计算无效字符数
+			invaildLine = paperCount * 1;							//计算无效行数
 			if (phraseLen == -1)									//不启用词组词频统计功能
 			{
 				vector<map<string, int>::iterator> topXWord = count.countTopXWord(topX);	//统计出现频率最高的10个单词（有可能单词数没有10个）
-				FileIO::outputToFile(characterCount, wordCount, lineCount, outputFileName, topXWord);	//将结果输出到文件
+				FileIO::outputToFile(characterCount - invaildChar, wordCount, lineCount - invaildLine, outputFileName, topXWord);	//将结果输出到文件
 			}
 		}
 		else

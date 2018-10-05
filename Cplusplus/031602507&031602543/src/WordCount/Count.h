@@ -12,6 +12,7 @@ public:
 	int countCharNum(string &charBuf);
 	int countWordNum(vector<string> &linesBuf, int weightValue);
 	int countLineNum(vector<string> &linesBuf);
+	int getpaperCount();
 	vector<map<string,int>::iterator>  & countTopXWord(int topX);
 private:
 	map<string, int> wordMap;

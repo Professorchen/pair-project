@@ -16,6 +16,7 @@ public:
 private:
 	map<string, int> wordMap;
 	vector<map<string, int>::iterator> topXWord;
+	int paperCount;
 	inline bool isLetter(string::iterator it);
 	inline bool isLetter(const char & ch);
 	inline bool isDigit(string::iterator it);

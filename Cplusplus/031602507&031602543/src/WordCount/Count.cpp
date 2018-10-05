@@ -40,13 +40,14 @@ int Count::countWordNum(vector<string> &linesBuf,int weightValue)
 			}
 			else 
 			{
-				if (wordBuf == "title" && linesBuf[i][j] == ':')
+				if (wordBuf == "title" && linesBuf[i][j] == ':' && j == 5)
 				{
+
 					isTitle = 1;
 					wordBuf = "";
 					continue;
 				}
-				if (wordBuf == "abstract" && linesBuf[i][j] == ':')
+				if (wordBuf == "abstract" && linesBuf[i][j] == ':' && j == 8)
 				{
 					isTitle = 0;
 					wordBuf = "";

@@ -1,9 +1,9 @@
 /********************************************************************************
 * @File name: wc.cpp
 * @Author: ChenYuXin
-* @Version: 5.1
+* @Version: 5.2
 * @Date: 2018-10-05
-* @Description: word frequency weighting count
+* @Description: fixed bugs
 ********************************************************************************/
 
 

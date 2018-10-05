@@ -1,0 +1,51 @@
+[2018-09-11 23:48:53] [info] Start Program:
+Path:"D:\Study\SoftwareStudy\WordCount\Debug\WordCount.exe"
+Arguments:
+Working directory: "D:\Study\SoftwareStudy\WordCount\WordCount\"
+Modules: Selected: D:\Study\SoftwareStudy\WordCount\Debug\WordCount.exe Excluded: 
+Sources: Selected: D:\Study\SoftwareStudy\WordCount\WordCount Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: Binary C:\Users\嗯哼\AppData\Local\Temp\txuf22ha.3ie 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+
+[2018-09-11 23:48:53] [info] Module: D:\Study\SoftwareStudy\WordCount\Debug\WordCount.exe is selected because it matches selected pattern: D:\Study\SoftwareStudy\WordCount\Debug\WordCount.exe
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\wordcount.cpp line 15732480 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\fileio.cpp line 15732480 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\fileio.cpp line 15732480 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\fileio.cpp line 15732480 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\fileio.cpp line 15732480 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\count.cpp line 121 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\count.cpp line 15732480 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\count.cpp line 121 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\count.cpp line 121 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\count.cpp line 15732480 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\count.cpp line 121 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\count.cpp line 15732480 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\count.cpp line 15732480 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\count.cpp line 15732480 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\count.cpp line 15732480 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\count.cpp line 15732480 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\count.cpp line 15732480 does not exist, skipped
+[2018-09-11 23:48:53] [warning] d:\study\softwarestudy\wordcount\wordcount\count.cpp line 15732480 does not exist, skipped
+[2018-09-11 23:48:53] [info] Module: C:\Windows\SysWOW64\ntdll.dll is skipped because it matches no selected patterns
+[2018-09-11 23:48:53] [info] Module: C:\Windows\SysWOW64\kernel32.dll is skipped because it matches no selected patterns
+[2018-09-11 23:48:53] [info] Module: C:\Windows\SysWOW64\KernelBase.dll is skipped because it matches no selected patterns
+[2018-09-11 23:48:53] [info] Module: C:\Windows\SysWOW64\vcruntime140d.dll is skipped because it matches no selected patterns
+[2018-09-11 23:48:53] [info] Module: C:\Windows\SysWOW64\msvcp140d.dll is skipped because it matches no selected patterns
+[2018-09-11 23:48:53] [info] Module: C:\Windows\SysWOW64\ucrtbased.dll is skipped because it matches no selected patterns
+[2018-09-11 23:48:53] [info] Module: C:\Windows\SysWOW64\kernel.appcore.dll is skipped because it matches no selected patterns
+[2018-09-11 23:48:53] [info] Module: C:\Windows\SysWOW64\msvcrt.dll is skipped because it matches no selected patterns
+[2018-09-11 23:48:53] [info] Module: C:\Windows\SysWOW64\rpcrt4.dll is skipped because it matches no selected patterns
+[2018-09-11 23:48:53] [info] Module: C:\Windows\SysWOW64\sspicli.dll is skipped because it matches no selected patterns
+[2018-09-11 23:48:53] [info] Module: C:\Windows\SysWOW64\cryptbase.dll is skipped because it matches no selected patterns
+[2018-09-11 23:48:53] [info] Module: C:\Windows\SysWOW64\bcryptprimitives.dll is skipped because it matches no selected patterns
+[2018-09-11 23:48:53] [info] Module: C:\Windows\SysWOW64\sechost.dll is skipped because it matches no selected patterns
+[2018-09-11 23:48:53] [info] ----------------------------------------------------
+[2018-09-11 23:48:53] [info] Coverage binary generated in file: C:\Users\嗯哼\AppData\Local\Temp\txuf22ha.3ie
+[2018-09-11 23:48:53] [info] ----------------------------------------------------

@@ -1,9 +1,9 @@
 /********************************************************************************
 * @File name: wc.cpp
 * @Author: ChenYuXin
-* @Version: 5.0
+* @Version: 5.1
 * @Date: 2018-10-05
-* @Description: command line argument processing
+* @Description: word frequency weighting count
 ********************************************************************************/
 
 
@@ -55,6 +55,8 @@ int main(int argc, char *argv[])
 				topX = atoi(argv[i + 1]);
 			}
 		}
+
+
 		Count count;
 		string charBuf;
 		vector<string> linesBuf;
@@ -62,7 +64,7 @@ int main(int argc, char *argv[])
 		{
 			characterCount = count.countCharNum(charBuf);			//计算字符数
 			lineCount = count.countLineNum(linesBuf);				//计算行数
-			wordCount = count.countWordNum(linesBuf);				//计算单词数
+			wordCount = count.countWordNum(linesBuf,weightValue);	//计算单词数
 			if (phraseLen == -1)									//不启用词组词频统计功能
 			{
 				vector<map<string, int>::iterator> topXWord = count.countTopXWord(topX);	//统计出现频率最高的10个单词（有可能单词数没有10个）

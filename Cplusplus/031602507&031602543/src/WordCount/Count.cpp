@@ -23,11 +23,12 @@ int Count::countLineNum(vector<string> &linesBuf)
 	return lineCount;
 }
 //¼ÆËãµ¥´ÊÊý
-int Count::countWordNum(vector<string> &linesBuf)
+int Count::countWordNum(vector<string> &linesBuf,int weightValue)
 {
 	int wordCount = 0;
 	int linesBufSize = int(linesBuf.size());
 	string wordBuf;
+	int isTitle = 0;
 	for (int i = 0; i != linesBufSize; i++) 
 	{
 		int len = int(linesBuf[i].length());
@@ -37,20 +38,64 @@ int Count::countWordNum(vector<string> &linesBuf)
 			{
 				wordBuf += linesBuf[i][j];
 			}
-			else {
+			else 
+			{
+				if (wordBuf == "title" && linesBuf[i][j] == ':')
+				{
+					isTitle = 1;
+					wordBuf = "";
+					continue;
+				}
+				if (wordBuf == "abstract" && linesBuf[i][j] == ':')
+				{
+					isTitle = 0;
+					wordBuf = "";
+					continue;
+				}
 				if (wordBuf.length() >= 4 && isLetter(wordBuf[0]) && isLetter(wordBuf[1]) && isLetter(wordBuf[2]) && isLetter(wordBuf[3])) 
+				{
+					if (weightValue == 0)
+					{
+						wordMap[wordBuf]++;
+						wordCount++;
+					}
+					else
+					{
+						if (isTitle == 1)
+						{
+							wordMap[wordBuf] += 10;
+							wordCount++;
+						}
+						else
+						{
+							wordMap[wordBuf]++;
+							wordCount++;
+						}
+					}
+				}
+				wordBuf = "";
+			}
+		}
+		if (wordBuf.length() >= 4 && isLetter(wordBuf[0]) && isLetter(wordBuf[1]) && isLetter(wordBuf[2]) && isLetter(wordBuf[3]))
+		{
+			if (weightValue == 0)
+			{
+				wordMap[wordBuf]++;
+				wordCount++;
+			}
+			else
+			{
+				if (isTitle == 1)
+				{
+					wordMap[wordBuf] += 10;
+					wordCount++;
+				}
+				else
 				{
 					wordMap[wordBuf]++;
 					wordCount++;
 				}
-				wordBuf = "";
 			}
-
-		}
-		if (wordBuf.length() >= 4 && isLetter(wordBuf[0]) && isLetter(wordBuf[1]) && isLetter(wordBuf[2]) && isLetter(wordBuf[3])) 
-		{
-			wordMap[wordBuf]++;
-			wordCount++;
 		}
 		wordBuf = "";
 

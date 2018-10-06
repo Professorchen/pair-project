@@ -38,23 +38,22 @@ bool FileIO::readChar(int argc, char *argv[],const char* inputFileName,string &c
 	}
 }
 //Êä³öÎÄ¼þ
-void FileIO::outputToFile(int characterCount, int wordCount,int lineCount, const char* outputFileName,vector<map<string,int>::iterator> &topXWord)
+void FileIO::outputToFile(int characterCount, int wordCount,int lineCount, const char* outputFileName,vector<map<string,int>::iterator> &topX)
 {
 	ofstream wf(outputFileName, ios::out);
 	wf << "characters: " << characterCount << endl;
 	wf << "words: " << wordCount << endl;
 	wf << "lines: " << lineCount << endl;
-	for (int i = 0; i < int(topXWord.size()); i++)
+	for (int i = 0; i < int(topX.size()); i++)
 	{
 		if (i == 0)
 		{
-			wf << "<" << topXWord[i]->first << ">: " << -topXWord[i]->second;
+			wf << "<" << topX[i]->first << ">: " << -topX[i]->second;
 		}
 		else
 		{
-			wf << endl << "<" << topXWord[i]->first << ">: " << -topXWord[i]->second;
+			wf << endl << "<" << topX[i]->first << ">: " << -topX[i]->second;
 		}
 	}
 	wf.close();
-	//cout << "Output Completed";
 }

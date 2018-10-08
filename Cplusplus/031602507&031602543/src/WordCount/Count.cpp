@@ -29,7 +29,7 @@ int Count::countWordNum(vector<string> &linesBuf,int weightValue, int phraseLen)
 	int linesBufSize = int(linesBuf.size());
 	string wordBuf;
 	vector<string> phraseBuf;
-	int wordInPhrase = 0;
+	int wordInPhrase = 0;	//词组缓存中的单词数
 	int isTitle = 0;
 	for (int i = 0; i != linesBufSize; i++)
 	{
@@ -44,10 +44,10 @@ int Count::countWordNum(vector<string> &linesBuf,int weightValue, int phraseLen)
 			{
 				if (wordBuf == "title" && linesBuf[i][j] == ':' && j == 5)
 				{
-					paperCount++;
+					paperCount++;	//每出现一个 title: 说明是一篇论文
 					isTitle = 1;
 					wordBuf = "";
-					phraseBuf.clear();
+					phraseBuf.clear();	//跨字段的词组不算
 					wordInPhrase = 0;
 					continue;
 				}
@@ -86,14 +86,14 @@ int Count::countWordNum(vector<string> &linesBuf,int weightValue, int phraseLen)
 							}
 						}
 					}
-					if (weightValue == 0)
+					if (weightValue == 0)	//没有权重的词频统计
 					{
 						wordMap[wordBuf]++;
 						wordCount++;
 					}
 					else
 					{
-						if (isTitle == 1)
+						if (isTitle == 1)	//标题字段的单词
 						{
 							wordMap[wordBuf] += 10;
 							wordCount++;
@@ -115,7 +115,7 @@ int Count::countWordNum(vector<string> &linesBuf,int weightValue, int phraseLen)
 				}
 				if (wordInPhrase > 0)
 				{
-					phraseBuf.push_back(string(1,linesBuf[i][j]));
+					phraseBuf.push_back(string(1,linesBuf[i][j]));	//加入分隔符，但是词组不能以分隔符开头
 				}
 				wordBuf = "";
 			}
@@ -154,7 +154,7 @@ int Count::countWordNum(vector<string> &linesBuf,int weightValue, int phraseLen)
 			}
 			else
 			{
-				if (isTitle == 1)
+				if (isTitle == 1)	//标题字段的单词
 				{
 					wordMap[wordBuf] += 10;
 					wordCount++;

@@ -1,9 +1,9 @@
 /********************************************************************************
 * @File name: wc.cpp
 * @Author: ChenYuXin
-* @Version: 5.5
+* @Version: 5.7
 * @Date: 2018-10-06
-* @Description: fixed bugs
+* @Description: add comment
 ********************************************************************************/
 
 
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 		const char* inputFileName = "";  //输入文件名
 		const char* outputFileName = ""; //输出文件名
 		int weightValue = 0;		//权重
-		int phraseLen = -1;         //分隔符个数
+		int phraseLen = -1;         //单词个数
 		int topX = 10;				//频率最高的单词(词组),默认为10
 		for (int i = 1; i < argc; i++)
 		{
@@ -64,17 +64,11 @@ int main(int argc, char *argv[])
 		vector<string> linesBuf;
 		if(FileIO::readChar(argc, argv,inputFileName,charBuf,linesBuf))			
 		{	
-			//cout << int(linesBuf.size()) << endl;
-			/*for (int i = 0; i < int(linesBuf.size()); i++)
-			{
-				cout << linesBuf[i];
-			}*/
 			characterCount = count.countCharNum(charBuf);			//计算字符数
 			lineCount = count.countLineNum(linesBuf);				//计算行数
 			wordCount = count.countWordNum(linesBuf,weightValue,phraseLen);	//计算单词数
 			paperCount = count.getpaperCount();						//获取论文数
 			invaildChar = (paperCount * 17);						//计算无效字符数
-			cout << paperCount;
 			if (phraseLen == -1)									//不启用词组词频统计功能
 			{
 				vector<map<string, int>::iterator> topXWord = count.countTopXWord(topX);	//统计出现频率最高的10个单词（有可能单词数没有10个）

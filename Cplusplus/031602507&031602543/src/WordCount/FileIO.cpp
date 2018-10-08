@@ -43,7 +43,7 @@ bool FileIO::readChar(int argc, char *argv[],const char* inputFileName,string &c
 						linesBuf.push_back(tempLine);
 						tempLine = "";
 						newLineCount++;
-						if (newLineCount == 2)
+						if (newLineCount == 2)	//一篇论文结束
 						{
 							break;
 						}

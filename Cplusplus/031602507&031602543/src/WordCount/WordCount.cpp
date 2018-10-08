@@ -1,9 +1,9 @@
 /********************************************************************************
 * @File name: wc.cpp
 * @Author: ChenYuXin
-* @Version: 5.4
+* @Version: 5.5
 * @Date: 2018-10-06
-* @Description: phrase count
+* @Description: fixed bugs
 ********************************************************************************/
 
 
@@ -63,17 +63,22 @@ int main(int argc, char *argv[])
 		string charBuf;
 		vector<string> linesBuf;
 		if(FileIO::readChar(argc, argv,inputFileName,charBuf,linesBuf))			
-		{
+		{	
+			//cout << int(linesBuf.size()) << endl;
+			/*for (int i = 0; i < int(linesBuf.size()); i++)
+			{
+				cout << linesBuf[i];
+			}*/
 			characterCount = count.countCharNum(charBuf);			//计算字符数
 			lineCount = count.countLineNum(linesBuf);				//计算行数
 			wordCount = count.countWordNum(linesBuf,weightValue,phraseLen);	//计算单词数
 			paperCount = count.getpaperCount();						//获取论文数
-			invaildChar = (paperCount * 19) + (paperCount - 1) * 2;	//计算无效字符数
-			invaildLine = paperCount * 1;							//计算无效行数
+			invaildChar = (paperCount * 17);						//计算无效字符数
+			cout << paperCount;
 			if (phraseLen == -1)									//不启用词组词频统计功能
 			{
 				vector<map<string, int>::iterator> topXWord = count.countTopXWord(topX);	//统计出现频率最高的10个单词（有可能单词数没有10个）
-				FileIO::outputToFile(characterCount - invaildChar, wordCount, lineCount - invaildLine, outputFileName, topXWord);	//将结果输出到文件
+				FileIO::outputToFile(characterCount - invaildChar, wordCount, lineCount, outputFileName, topXWord);	//将结果输出到文件
 			}
 			else
 			{

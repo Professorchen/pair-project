@@ -1,0 +1,7 @@
+characters: 31
+words: 4
+lines: 2
+<apple>: 1
+<delicious>: 1
+<hello>: 1
+<such>: 1

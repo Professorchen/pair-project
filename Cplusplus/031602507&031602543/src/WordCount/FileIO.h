@@ -11,8 +11,8 @@ using namespace std;
 class FileIO
 {
 public:
-	static bool readChar(int argc, char *argv[],const char* inputFileName,string &charBuf,vector<string> &linesBuf);
-	static void outputToFile(int characterCount, int lineCount, int wordCount, const char* outputFileName, vector<map<string,int>::iterator> &topXWord);
+	static bool readFile(const char* inputFileName,string &charBuf,vector<string> &linesBuf);
+	static bool outputToFile(int characterCount, int lineCount, int wordCount, const char* outputFileName, vector<map<string,int>::iterator> &topX);
 
 private:
 };

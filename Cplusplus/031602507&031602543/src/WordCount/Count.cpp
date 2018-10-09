@@ -22,7 +22,7 @@ int Count::countLineNum(vector<string> &linesBuf)
 	}
 	return lineCount;
 }
-//计算单词数
+//计算单词数/词组数
 int Count::countWordNum(vector<string> &linesBuf,int weightValue, int phraseLen)
 {
 	int wordCount = 0;

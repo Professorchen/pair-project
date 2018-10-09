@@ -1,9 +1,9 @@
 /********************************************************************************
-* @File name: wc.cpp
+* @File name: WordCount.cpp
 * @Author: ChenYuXin
 * @Version: 5.7
 * @Date: 2018-10-06
-* @Description: add comment
+* @Description: 
 ********************************************************************************/
 
 
@@ -29,9 +29,8 @@ int main(int argc, char *argv[])
 		int wordCount = 0;			//单词数
 		int paperCount = 0;			//论文数
 		int invaildChar = 0;		//无效字符数
-		int invaildLine = 0;		//无效行数
-		const char* inputFileName = "";  //输入文件名
-		const char* outputFileName = ""; //输出文件名
+		const char* inputFileName = "input.txt";  //输入文件名
+		const char* outputFileName = "output.txt"; //输出文件名
 		int weightValue = 0;		//权重
 		int phraseLen = -1;         //单词个数
 		int topX = 10;				//频率最高的单词(词组),默认为10
@@ -58,11 +57,10 @@ int main(int argc, char *argv[])
 				topX = atoi(argv[i + 1]);
 			}
 		}
-
 		Count count;
 		string charBuf;
 		vector<string> linesBuf;
-		if(FileIO::readChar(argc, argv,inputFileName,charBuf,linesBuf))			
+		if(FileIO::readFile(inputFileName,charBuf,linesBuf))			
 		{	
 			characterCount = count.countCharNum(charBuf);			//计算字符数
 			lineCount = count.countLineNum(linesBuf);				//计算行数
@@ -72,12 +70,18 @@ int main(int argc, char *argv[])
 			if (phraseLen == -1)									//不启用词组词频统计功能
 			{
 				vector<map<string, int>::iterator> topXWord = count.countTopXWord(topX);	//统计出现频率最高的10个单词（有可能单词数没有10个）
-				FileIO::outputToFile(characterCount - invaildChar, wordCount, lineCount, outputFileName, topXWord);	//将结果输出到文件
+				if (!FileIO::outputToFile(characterCount - invaildChar, wordCount, lineCount, outputFileName, topXWord))	//将结果输出到文件
+				{
+					cout << "output to file fail";
+				}
 			}
 			else
 			{
 				vector<map<string, int>::iterator> topXPhrase = count.countTopXPhrase(topX);	//统计出现频率最高的10个词组（有可能单词数没有10个）
-				FileIO::outputToFile(characterCount - invaildChar, wordCount, lineCount - invaildLine, outputFileName, topXPhrase);	//将结果输出到文件
+				if (!FileIO::outputToFile(characterCount - invaildChar, wordCount, lineCount, outputFileName, topXPhrase))	//将结果输出到文件
+				{
+					cout << "output to file fail";
+				}
 			}
 		}
 		else
@@ -86,6 +90,6 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	system("pause");
+	//system("pause");
 	return 0;
 }

@@ -10,8 +10,9 @@ class Count
 {
 public:
 	int countCharNum(string &charBuf);
-	int countWordNum(vector<string> &linesBuf, int weightValue, int phraseLen);
 	int countLineNum(vector<string> &linesBuf);
+	int countWordNum(vector<string> &linesBuf, int weightValue);
+	int countPhraseNum(vector<string> &linesBuf, int weightValue, int phraseLen);
 	int getpaperCount();
 	vector<map<string, int>::iterator>  & countTopXWord(int topX);
 	vector<map<string, int>::iterator>  & countTopXPhrase(int topX);

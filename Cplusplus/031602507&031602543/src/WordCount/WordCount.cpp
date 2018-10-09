@@ -1,9 +1,9 @@
 /********************************************************************************
 * @File name: WordCount.cpp
 * @Author: ChenYuXin
-* @Version: 5.7
+* @Version: 5.8
 * @Date: 2018-10-06
-* @Description: 
+* @Description: code optimization 
 ********************************************************************************/
 
 
@@ -64,11 +64,11 @@ int main(int argc, char *argv[])
 		{	
 			characterCount = count.countCharNum(charBuf);			//计算字符数
 			lineCount = count.countLineNum(linesBuf);				//计算行数
-			wordCount = count.countWordNum(linesBuf,weightValue,phraseLen);	//计算单词数
-			paperCount = count.getpaperCount();						//获取论文数
-			invaildChar = (paperCount * 17);						//计算无效字符数
-			if (phraseLen == -1)									//不启用词组词频统计功能
+			if (phraseLen == -1)
 			{
+				wordCount = count.countWordNum(linesBuf, weightValue);	//计算单词数
+				paperCount = count.getpaperCount();						//获取论文数
+				invaildChar = (paperCount * 17);						//计算无效字符数
 				vector<map<string, int>::iterator> topXWord = count.countTopXWord(topX);	//统计出现频率最高的10个单词（有可能单词数没有10个）
 				if (!FileIO::outputToFile(characterCount - invaildChar, wordCount, lineCount, outputFileName, topXWord))	//将结果输出到文件
 				{
@@ -77,6 +77,9 @@ int main(int argc, char *argv[])
 			}
 			else
 			{
+				wordCount = count.countPhraseNum(linesBuf, weightValue,phraseLen);	//计算词组数
+				paperCount = count.getpaperCount();						//获取论文数
+				invaildChar = (paperCount * 17);						//计算无效字符数
 				vector<map<string, int>::iterator> topXPhrase = count.countTopXPhrase(topX);	//统计出现频率最高的10个词组（有可能单词数没有10个）
 				if (!FileIO::outputToFile(characterCount - invaildChar, wordCount, lineCount, outputFileName, topXPhrase))	//将结果输出到文件
 				{

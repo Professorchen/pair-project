@@ -22,15 +22,95 @@ int Count::countLineNum(vector<string> &linesBuf)
 	}
 	return lineCount;
 }
-//计算单词数/词组数
-int Count::countWordNum(vector<string> &linesBuf,int weightValue, int phraseLen)
+//计算单词数
+int Count::countWordNum(vector<string> &linesBuf, int weightValue)
+{
+	int wordCount = 0;
+	int linesBufSize = int(linesBuf.size());
+	string wordBuf;
+	bool isTitle = false;
+	for (int i = 0; i != linesBufSize; i++)
+	{
+		int lineLen = int(linesBuf[i].length());
+		for (int j = 0; j < lineLen; j++)
+		{
+			if (isLetter(linesBuf[i][j]) || isDigit(linesBuf[i][j]))
+			{
+				wordBuf += linesBuf[i][j];
+			}
+			else
+			{
+				if (wordBuf == "title" && linesBuf[i][j] == ':' && j == 5)
+				{
+					paperCount++;	//每出现一个 title: 说明是一篇论文
+					isTitle = true;
+					wordBuf = "";
+					continue;
+				}
+				if (wordBuf == "abstract" && linesBuf[i][j] == ':' && j == 8)
+				{
+					isTitle = false;
+					wordBuf = "";
+					continue;
+				}
+				if (isWord(wordBuf))
+				{
+					if (weightValue == 0)	//没有权重的词频统计
+					{
+						wordMap[wordBuf]++;
+						wordCount++;
+					}
+					else
+					{
+						if (isTitle == true)	//标题字段的单词
+						{
+							wordMap[wordBuf] += 10;
+							wordCount++;
+						}
+						else
+						{
+							wordMap[wordBuf]++;
+							wordCount++;
+						}
+					}
+				}
+				wordBuf = "";
+			}
+		}
+		if (isWord(wordBuf))
+		{
+			if (weightValue == 0)
+			{
+				wordMap[wordBuf]++;
+				wordCount++;
+			}
+			else
+			{
+				if (isTitle == true)	//标题字段的单词
+				{
+					wordMap[wordBuf] += 10;
+					wordCount++;
+				}
+				else
+				{
+					wordMap[wordBuf]++;
+					wordCount++;
+				}
+			}
+		}
+		wordBuf = "";
+	}
+	return wordCount;
+}
+//计算词组数
+int Count::countPhraseNum(vector<string> &linesBuf, int weightValue, int phraseLen)
 {
 	int wordCount = 0;
 	int linesBufSize = int(linesBuf.size());
 	string wordBuf;
 	vector<string> phraseBuf;
 	int wordInPhrase = 0;	//词组缓存中的单词数
-	int isTitle = 0;
+	bool isTitle = false;
 	for (int i = 0; i != linesBufSize; i++)
 	{
 		int len = int(linesBuf[i].length());
@@ -45,7 +125,7 @@ int Count::countWordNum(vector<string> &linesBuf,int weightValue, int phraseLen)
 				if (wordBuf == "title" && linesBuf[i][j] == ':' && j == 5)
 				{
 					paperCount++;	//每出现一个 title: 说明是一篇论文
-					isTitle = 1;
+					isTitle = true;
 					wordBuf = "";
 					phraseBuf.clear();	//跨字段的词组不算
 					wordInPhrase = 0;
@@ -53,7 +133,7 @@ int Count::countWordNum(vector<string> &linesBuf,int weightValue, int phraseLen)
 				}
 				if (wordBuf == "abstract" && linesBuf[i][j] == ':' && j == 8)
 				{
-					isTitle = 0;
+					isTitle = false;
 					wordBuf = "";
 					phraseBuf.clear();
 					wordInPhrase = 0;
@@ -71,7 +151,21 @@ int Count::countWordNum(vector<string> &linesBuf,int weightValue, int phraseLen)
 						{
 							phrase += phraseBuf[it];
 						}
-						phraseMap[phrase]++;
+						if (weightValue == 0)
+						{
+							phraseMap[phrase]++;
+						}
+						else
+						{
+							if (isTitle == true)
+							{
+								phraseMap[phrase] += 10;
+							}
+							else
+							{
+								phraseMap[phrase]++;
+							}
+						}
 						phraseBuf.erase(phraseBuf.begin());
 						wordInPhrase--;
 						while (!phraseBuf.empty())
@@ -86,24 +180,7 @@ int Count::countWordNum(vector<string> &linesBuf,int weightValue, int phraseLen)
 							}
 						}
 					}
-					if (weightValue == 0)	//没有权重的词频统计
-					{
-						wordMap[wordBuf]++;
-						wordCount++;
-					}
-					else
-					{
-						if (isTitle == 1)	//标题字段的单词
-						{
-							wordMap[wordBuf] += 10;
-							wordCount++;
-						}
-						else
-						{
-							wordMap[wordBuf]++;
-							wordCount++;
-						}
-					}
+					wordCount++;
 				}
 				else
 				{
@@ -147,24 +224,7 @@ int Count::countWordNum(vector<string> &linesBuf,int weightValue, int phraseLen)
 					}
 				}
 			}
-			if (weightValue == 0)
-			{
-				wordMap[wordBuf]++;
-				wordCount++;
-			}
-			else
-			{
-				if (isTitle == 1)	//标题字段的单词
-				{
-					wordMap[wordBuf] += 10;
-					wordCount++;
-				}
-				else
-				{
-					wordMap[wordBuf]++;
-					wordCount++;
-				}
-			}
+			wordCount++;
 		}
 		else
 		{

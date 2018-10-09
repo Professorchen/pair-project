@@ -27,7 +27,7 @@ namespace WordCountTest
 			vector<map<string, int>::iterator> topX;
 			Assert::AreEqual(FileIO::outputToFile(characterCount, wordCount, lineCount, outputFileName, topX), false);
 		}
-		TEST_METHOD(TestMethod3)	//测试字符统计函数
+		TEST_METHOD(TestMethod3)	//测试字符统计功能
 		{
 			int characterCount = 0;
 			const char* inputFileName = "../WordCountTest/input1.txt";
@@ -46,7 +46,7 @@ namespace WordCountTest
 			vector<string> linesBuf;
 			Assert::AreEqual(FileIO::readFile(inputFileName, charBuf, linesBuf), true);
 			Count count;
-			Assert::AreEqual(count.countWordNum(linesBuf,weightValue,-1), 2);
+			Assert::AreEqual(count.countWordNum(linesBuf,weightValue), 2);
 		}
 		TEST_METHOD(TestMethod5)	//测试当加入权重时单词个数统计是否影响
 		{
@@ -57,7 +57,7 @@ namespace WordCountTest
 			vector<string> linesBuf;
 			Assert::AreEqual(FileIO::readFile(inputFileName, charBuf, linesBuf), true);
 			Count count;
-			Assert::AreEqual(count.countWordNum(linesBuf, weightValue, -1), 2);
+			Assert::AreEqual(count.countWordNum(linesBuf, weightValue), 2);
 		}
 		TEST_METHOD(TestMethod6)	//测试无权重单词词频统计功能
 		{
@@ -68,7 +68,7 @@ namespace WordCountTest
 			vector<string> linesBuf;
 			Assert::AreEqual(FileIO::readFile(inputFileName, charBuf, linesBuf), true);
 			Count count;
-			Assert::AreEqual(count.countWordNum(linesBuf, weightValue, -1), 11);
+			Assert::AreEqual(count.countWordNum(linesBuf, weightValue), 11);
 			vector<map<string, int>::iterator> topXWord = count.countTopXWord(topX);
 			Assert::AreEqual(topXWord[0]->first,string( "abcd"));
 			Assert::AreEqual(-topXWord[0]->second, 4);
@@ -92,7 +92,7 @@ namespace WordCountTest
 			vector<string> linesBuf;
 			Assert::AreEqual(FileIO::readFile(inputFileName, charBuf, linesBuf), true);
 			Count count;
-			Assert::AreEqual(count.countWordNum(linesBuf, weightValue, -1), 11);
+			Assert::AreEqual(count.countWordNum(linesBuf, weightValue), 11);
 			vector<map<string, int>::iterator> topXWord = count.countTopXWord(topX);
 			Assert::AreEqual(topXWord[0]->first, string("abcd"));
 			Assert::AreEqual(-topXWord[0]->second, 31);
@@ -115,7 +115,7 @@ namespace WordCountTest
 			vector<string> linesBuf;
 			Assert::AreEqual(FileIO::readFile(inputFileName, charBuf, linesBuf), true);
 			Count count;
-			Assert::AreEqual(count.countWordNum(linesBuf, 0, 2), 5);
+			Assert::AreEqual(count.countPhraseNum(linesBuf, 0, 2), 5);
 			vector<map<string, int>::iterator> topXPhrase = count.countTopXPhrase(topX);
 			Assert::AreEqual(topXPhrase[0]->first, string("monday tuesday"));
 			Assert::AreEqual(-topXPhrase[0]->second, 1);
@@ -143,7 +143,7 @@ namespace WordCountTest
 			Count count;
 			Assert::AreEqual(count.countCharNum(charBuf) - 979 * 17,1196950);			
 			Assert::AreEqual(count.countLineNum(linesBuf), 1958);
-			Assert::AreEqual(count.countWordNum(linesBuf, 0, -1), 120374);
+			Assert::AreEqual(count.countWordNum(linesBuf, 0), 120374);
 			vector<map<string, int>::iterator> topXWord = count.countTopXWord(10);
 			Assert::AreEqual(topXWord[0]->first, string("that"));
 			Assert::AreEqual(-topXWord[0]->second, 1757);
@@ -173,7 +173,7 @@ namespace WordCountTest
 			vector<string> linesBuf;
 			Assert::AreEqual(FileIO::readFile(inputFileName, charBuf, linesBuf), true);
 			Count count;
-			Assert::AreEqual(count.countWordNum(linesBuf, 0, 2), 4);
+			Assert::AreEqual(count.countPhraseNum(linesBuf, 0, 2), 4);
 			vector<map<string, int>::iterator> topXPhrase = count.countTopXPhrase(10);
 			Assert::AreEqual(topXPhrase[0]->first, string("this (<apple"));
 			Assert::AreEqual(-topXPhrase[0]->second, 1);
@@ -185,7 +185,7 @@ namespace WordCountTest
 			vector<string> linesBuf;
 			Assert::AreEqual(FileIO::readFile(inputFileName, charBuf, linesBuf), true);
 			Count count;
-			Assert::AreEqual(count.countWordNum(linesBuf, 0, 2), 4);
+			Assert::AreEqual(count.countPhraseNum(linesBuf, 0, 2), 4);
 			vector<map<string, int>::iterator> topXPhrase = count.countTopXPhrase(10);
 			Assert::AreEqual(topXPhrase[0]->first, string("delicious apple"));
 			Assert::AreEqual(-topXPhrase[0]->second, 1);

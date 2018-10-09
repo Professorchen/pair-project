@@ -1,7 +1,6 @@
-characters: 31
-words: 4
+characters: 74
+words: 9
 lines: 2
-<apple>: 1
-<delicious>: 1
-<hello>: 1
-<such>: 1
+<monday tuesday wednesday>: 11
+<tuesday wednesday thursday>: 11
+<wednesday thursday friday>: 1

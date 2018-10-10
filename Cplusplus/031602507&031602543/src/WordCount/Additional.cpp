@@ -127,6 +127,7 @@ void Additional::countAuthor(vector<string> &linesBuf)
 				max = it;
 			}
 		}
+		wf << "No" << i << ":";
 		wf << max->first << "/" << max->second << endl;
 		max->second = -max->second;
 	}

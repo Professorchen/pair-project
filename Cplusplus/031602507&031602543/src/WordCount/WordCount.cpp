@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 		int wordCount = 0;			//单词数
 		int paperCount = 0;			//论文数
 		int invaildChar = 0;		//无效字符数
-		const char* inputFileName = "input(2).txt";  //输入文件名
+		const char* inputFileName = "input(3).txt";  //输入文件名
 		const char* outputFileName = "output.txt"; //输出文件名
 		int weightValue = 0;		//权重
 		int phraseLen = -1;         //单词个数
@@ -57,14 +57,17 @@ int main(int argc, char *argv[])
 			{
 				topX = atoi(argv[i + 1]);
 			}
+			else if (strcmp(argv[i], "-a") == 0)
+			{
+				vector<string> linesBuf;
+				Additional additional;
+				additional.readF("input(2).txt", linesBuf);
+				additional.countAuthor(linesBuf);
+			}
 		}
 		Count count;
 		string charBuf;
 		vector<string> linesBuf;
-		Additional additional;
-		additional.readF(inputFileName, linesBuf);
-		additional.countAuthor(linesBuf);
-		cout << 1;
 		if(FileIO::readFile(inputFileName,charBuf,linesBuf))			
 		{	
 			characterCount = count.countCharNum(charBuf);			//计算字符数
@@ -98,6 +101,6 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	system("pause");
+	//system("pause");
 	return 0;
 }

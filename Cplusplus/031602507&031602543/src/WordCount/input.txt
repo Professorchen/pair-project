@@ -1,3 +1,10 @@
 0
-Title: Monday Tuesday Wednesday Thursday
-Abstract: Monday Tuesday Wednesday Thursday Friday
+Title: Chen
+Authors: Abhishek Das, Samyak Datta, Georgia Gkioxari, Stefan Lee, Devi Parikh, Dhruv Batra
+Abstract: We present a new AI task -- Embodied Question Answering (EmbodiedQA) -- where an agent
+
+
+1
+Title: Chen
+Authors: Abhishek Das, Samyak Datta, Georgia Gkioxari, Stefan Lee, Devi Parikh, Dhruv Batra
+Abstract: We present a new AI task -- Embodied Question Answering (EmbodiedQA) -- where an agent

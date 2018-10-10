@@ -16,6 +16,7 @@
 #include<algorithm>
 #include"Count.h"	//封装所有的统计相关的功能
 #include"FileIO.h"	//封装所有文件读写相关的功能
+#include"Additional.h"
 using namespace std;
 
 
@@ -29,7 +30,7 @@ int main(int argc, char *argv[])
 		int wordCount = 0;			//单词数
 		int paperCount = 0;			//论文数
 		int invaildChar = 0;		//无效字符数
-		const char* inputFileName = "input.txt";  //输入文件名
+		const char* inputFileName = "input(2).txt";  //输入文件名
 		const char* outputFileName = "output.txt"; //输出文件名
 		int weightValue = 0;		//权重
 		int phraseLen = -1;         //单词个数
@@ -60,6 +61,10 @@ int main(int argc, char *argv[])
 		Count count;
 		string charBuf;
 		vector<string> linesBuf;
+		Additional additional;
+		additional.readF(inputFileName, linesBuf);
+		additional.countAuthor(linesBuf);
+		cout << 1;
 		if(FileIO::readFile(inputFileName,charBuf,linesBuf))			
 		{	
 			characterCount = count.countCharNum(charBuf);			//计算字符数
@@ -78,8 +83,8 @@ int main(int argc, char *argv[])
 			else
 			{
 				wordCount = count.countPhraseNum(linesBuf, weightValue,phraseLen);	//计算词组数
-				paperCount = count.getpaperCount();						//获取论文数
-				invaildChar = (paperCount * 17);						//计算无效字符数
+				paperCount = count.getpaperCount();									//获取论文数
+				invaildChar = (paperCount * 17);									//计算无效字符数
 				vector<map<string, int>::iterator> topXPhrase = count.countTopXPhrase(topX);	//统计出现频率最高的10个词组（有可能单词数没有10个）
 				if (!FileIO::outputToFile(characterCount - invaildChar, wordCount, lineCount, outputFileName, topXPhrase))	//将结果输出到文件
 				{
@@ -93,6 +98,6 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	//system("pause");
+	system("pause");
 	return 0;
 }

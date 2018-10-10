@@ -115,11 +115,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Additional.cpp" />
     <ClCompile Include="Count.cpp" />
     <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="WordCount.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Additional.h" />
     <ClInclude Include="Count.h" />
     <ClInclude Include="FileIO.h" />
   </ItemGroup>

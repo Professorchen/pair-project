@@ -1,0 +1,11 @@
+Name/InfluenceFactor
+ luc van gool/32
+ chunhua shen/27
+ jiashi feng/25
+ wei liu/25
+ tao xiang/24
+ ming-hsuan yang/23
+ wanli ouyang/23
+ huchuan lu/22
+ bingbing ni/21
+ kristen grauman/21

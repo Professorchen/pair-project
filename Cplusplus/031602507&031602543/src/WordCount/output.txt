@@ -1,6 +1,13 @@
-characters: 74
-words: 9
-lines: 2
-<monday tuesday wednesday>: 11
-<tuesday wednesday thursday>: 11
-<wednesday thursday friday>: 1
+characters: 106306
+words: 142405
+lines: 4895
+<authors>: 1959
+<that>: 1757
+<with>: 1614
+<this>: 1444
+<image>: 1350
+<learning>: 1189
+<from>: 1177
+<network>: 1068
+<which>: 807
+<model>: 784

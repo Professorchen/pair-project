@@ -1,0 +1,10 @@
+No 1: luc van gool, 32
+No 2: chunhua shen, 27
+No 3: jiashi feng, 25
+No 4: wei liu, 25
+No 5: tao xiang, 24
+No 6: ming-hsuan yang, 23
+No 7: wanli ouyang, 23
+No 8: huchuan lu, 22
+No 9: bingbing ni, 21
+No 10: kristen grauman, 21
